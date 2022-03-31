@@ -56,6 +56,7 @@ class _FirstPage extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: (const Color.fromARGB(255, 201, 238, 255)),
       appBar: AppBar(
         title: const Text('Notemobile'),
         centerTitle: true,
