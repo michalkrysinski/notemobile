@@ -3,21 +3,21 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:notemobile/page/managementpage/managementpage.dart';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({
+class FirstPage extends StatefulWidget {
+  const FirstPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  _RegistrationPage createState() => _RegistrationPage();
+  _FirstPage createState() => _FirstPage();
 }
 
-class _RegistrationPage extends State<RegistrationPage> {
+class _FirstPage extends State<FirstPage> {
   @override
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 5),
+      const Duration(seconds: 6),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -36,8 +36,8 @@ class _RegistrationPage extends State<RegistrationPage> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 20, 145, 212),
-              Color.fromARGB(255, 20, 87, 174),
+              Color.fromARGB(255, 233, 30, 81),
+              Color.fromARGB(255, 0, 0, 0),
             ],
           ),
         ),
@@ -51,7 +51,7 @@ class _RegistrationPage extends State<RegistrationPage> {
             Column(
               children: [
                 Image.asset(
-                  'images/Notebook1.png',
+                  'images/Notebook.png',
                   height: 300.0,
                   width: 300.0,
                 ),
