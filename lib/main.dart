@@ -4,9 +4,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,27 +19,47 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Notemobile'),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              print('Hello Notemobile');
-            },
-            icon: Icon(Icons.menu),
+      home: const ManagementPage(),
+    );
+  }
+}
+
+class ManagementPage extends StatelessWidget {
+  const ManagementPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Notemobile'),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            print('Hello Notemobile');
+          },
+          icon: const Icon(Icons.menu),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_none),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.notifications_none),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+        ],
+        elevation: 10,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.indigo, Colors.pink],
+              begin: Alignment.bottomRight,
+              end: Alignment.topLeft,
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.search),
-            ),
-          ],
-          backgroundColor: Color.fromARGB(255, 250, 167, 43),
+          ),
         ),
       ),
     );
