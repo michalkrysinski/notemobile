@@ -1,4 +1,4 @@
-package com.example.notemobile
+package com.michalkrysinski.notemobile
 
 import io.flutter.embedding.android.FlutterActivity
 

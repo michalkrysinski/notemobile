@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:notemobile/page/managementpage/managementpage.dart';
+import 'package:notemobile/page/management_page/management_page.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({
