@@ -1,56 +1,51 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-class ManagementPage extends StatefulWidget {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Coś tu będzie wkrótce',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: const ManagementPage(),
+    );
+  }
+}
+
+class ManagementPage extends StatelessWidget {
   const ManagementPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<ManagementPage> createState() => _ManagementPageState();
-}
-
-class _ManagementPageState extends State<ManagementPage> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notemobile'),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.menu,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
-        ],
-        elevation: 10,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.black, Colors.pink],
-              begin: Alignment.bottomRight,
-              end: Alignment.topLeft,
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          final user = snapshot.data;
+          if (user == null) {
+            return const Scaffold(
+              body: Center(
+                child: Text('Jesteś niezalogowany'),
+              ),
+            );
+          }
+          return Scaffold(
+            body: Center(
+              child: Text('Jesteś zalogowany jako ${user.email}'),
             ),
-          ),
-        ),
-      ),
-      body: ListView(
-        children: [
-          Container(
-            color: Colors.pink,
-            padding: const EdgeInsets.all(25),
-            margin: const EdgeInsets.all(15),
-            child: const Text(
-              'Notemobile',
-            ),
-          ),
-        ],
-      ),
-    );
+          );
+        });
   }
 }
