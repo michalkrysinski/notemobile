@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
+    required this.user,
   }) : super(key: key);
+
+  final User user;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -45,9 +49,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.pink,
             padding: const EdgeInsets.all(25),
             margin: const EdgeInsets.all(15),
-            child: const Text(
-              'Notemobile',
-            ),
+            child: Text('Jesteś zalogowany jako ${widget.user.email}'),
           ),
         ],
       ),
