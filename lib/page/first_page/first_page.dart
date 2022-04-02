@@ -42,43 +42,154 @@ class _FirstPage extends State<FirstPage> {
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             const SizedBox(
-              height: 5,
+              height: 190,
             ),
-            Column(
-              children: [
-                Image.asset(
-                  'images/notebook1.jpg',
-                  height: 300.0,
-                  width: 300.0,
-                ),
-                SizedBox(
-                  height: 150,
-                  child: DefaultTextStyle(
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontSize: 35,
-                    ),
-                    child: AnimatedTextKit(
-                      repeatForever: true,
-                      isRepeatingAnimation: true,
-                      animatedTexts: [
-                        TyperAnimatedText('Welcome!'),
-                        TyperAnimatedText('Create your own notes'),
-                        TyperAnimatedText('in Notemobile!'),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            const CircleAvatar(
+              backgroundImage: AssetImage('images/iconnotes2.jpg'),
+              radius: 90,
             ),
-            const CircularProgressIndicator(),
+            const SizedBox(
+              height: 80,
+            ),
+            SizedBox(
+              height: 50,
+              child: DefaultTextStyle(
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontSize: 35,
+                ),
+                child: AnimatedTextKit(
+                  repeatForever: true,
+                  isRepeatingAnimation: true,
+                  animatedTexts: [
+                    TyperAnimatedText(
+                      'Hello!',
+                    ),
+                    TyperAnimatedText(
+                      'Create your own notes',
+                    ),
+                    TyperAnimatedText(
+                      'in Notemobile!',
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
+//  Column(
+     //     crossAxisAlignment: CrossAxisAlignment.center,
+     //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //    children: [
+      //      const SizedBox(
+      //        height: 5,
+      //      ),
+      //      Column(
+       //       children: [
+       //         Image.asset(
+         //         'images/notebook1.jpg',
+        //          height: 300.0,
+         //         width: 300.0,
+         //       ),
+            //    SizedBox(
+           //       height: 150,
+          //        child: DefaultTextStyle(
+          //          style: const TextStyle(
+          //            color: Color.fromARGB(255, 255, 255, 255),
+         //            fontSize: 35,
+         //           ),
+         //           child: AnimatedTextKit(
+           //           repeatForever: true,
+          //            isRepeatingAnimation: true,
+         //             animatedTexts: [
+            //            TyperAnimatedText('Welcome!'),
+           //             TyperAnimatedText('Create your own notes'),
+          //              TyperAnimatedText('in Notemobile!'),
+          //            ],
+         //           ),
+        //          ),
+        //        ),
+        //      ],
+        //    ),
+       //     const CircularProgressIndicator(),
+       //   ],
+       //
+
+      // child: AnimatedOpacity(
+      //    opacity: 1.0,
+       //   duration: const Duration(milliseconds: 1900),
+      //    child: Center(
+      //      child: Container(
+      //        height: 160.0,
+     //         width: 160.0,
+     //         child: const Center(
+      //          child: ClipOval(
+      //            child: Icon(
+      //              Icons.article,
+      //              size: 148,
+      //            ),
+      //          ),
+      //        ),
+       //     decoration: BoxDecoration(
+          //      shape: BoxShape.circle,
+         //       color: Colors.white,
+         //       boxShadow: [
+         //         BoxShadow(
+        //            color: Colors.black.withOpacity(0.3),
+        //            blurRadius: 2.0,
+        //            offset: const Offset(5.0, 3.0),
+       //             spreadRadius: 2.0,
+        //          ),
+        //        ],
+       //       ),
+       //     ),
+     //     ),
+      //  ),
+
+       //  Column(
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //    children: [
+            //      const SizedBox(
+            //        height: 5,
+            //      ),
+            //      Column(
+            //       children: [
+            //         Image.asset(
+            //         'images/notebook1.jpg',
+            //          height: 300.0,
+            //         width: 300.0,
+            //       ),
+            //    SizedBox(
+            //       height: 150,
+            //        child: DefaultTextStyle(
+            //          style: const TextStyle(
+            //            color: Color.fromARGB(255, 255, 255, 255),
+            //            fontSize: 35,
+            //           ),
+            //           child: AnimatedTextKit(
+            //           repeatForever: true,
+            //            isRepeatingAnimation: true,
+            //             animatedTexts: [
+            //            TyperAnimatedText('Welcome!'),
+            //             TyperAnimatedText('Create your own notes'),
+            //              TyperAnimatedText('in Notemobile!'),
+            //            ],
+            //           ),
+            //          ),
+            //        ),
+            //      ],
+            //    ),
+            //     const CircularProgressIndicator(),
+            //   ],
+            //

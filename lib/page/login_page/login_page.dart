@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -20,80 +21,120 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Padding(
-        padding: const EdgeInsets.all(40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się'),
-            const SizedBox(height: 50),
-            TextField(
-              controller: widget.emailController,
-              decoration: const InputDecoration(hintText: 'Email'),
-            ),
-            TextField(
-              controller: widget.passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(hintText: 'Password'),
-            ),
-            const SizedBox(height: 20),
-            Text(errorMessage),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () async {
-                if (isCreatingAccount == true) {
-                  //rejestracja
-                  try {
-                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                      email: widget.emailController.text,
-                      password: widget.passwordController.text,
-                    );
-                  } catch (error) {
-                    setState(() {
-                      errorMessage = error.toString();
-                    });
-                  }
-                } else {
-                  //logowanie
-                  try {
-                    await FirebaseAuth.instance.signInWithEmailAndPassword(
-                      email: widget.emailController.text,
-                      password: widget.passwordController.text,
-                    );
-                  } catch (error) {
-                    setState(() {
-                      errorMessage = error.toString();
-                    });
-                  }
-                }
-              },
-              child: Text(isCreatingAccount == true
-                  ? 'Zarejestruj się'
-                  : 'Zaloguj się'),
-            ),
-            const SizedBox(height: 20),
-            if (isCreatingAccount == false) ...[
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    isCreatingAccount = true;
-                  });
-                },
-                child: const Text('Utwórz konto'),
-              ),
-            ],
-            if (isCreatingAccount == true) ...[
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    isCreatingAccount = false;
-                  });
-                },
-                child: const Text('Masz już konto? Zaloguj się'),
-              ),
-            ],
+        body: Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 206, 93, 240),
+            Color.fromARGB(255, 119, 218, 254),
           ],
+        ),
+      ),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                isCreatingAccount == true
+                    ? 'Create account'
+                    : 'Hello, signin into your account',
+                style: GoogleFonts.alef(
+                    fontSize: 22, color: const Color.fromARGB(255, 0, 0, 0)),
+              ),
+              const SizedBox(height: 50),
+              TextField(
+                controller: widget.emailController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Your e-mail',
+                ),
+              ),
+              TextField(
+                controller: widget.passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Password',
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(errorMessage),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () async {
+                  if (isCreatingAccount == true) {
+                    //rejestracja
+                    try {
+                      await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                        email: widget.emailController.text,
+                        password: widget.passwordController.text,
+                      );
+                    } catch (error) {
+                      setState(() {
+                        errorMessage = error.toString();
+                      });
+                    }
+                  } else {
+                    //logowanie
+                    try {
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: widget.emailController.text,
+                        password: widget.passwordController.text,
+                      );
+                    } catch (error) {
+                      setState(() {
+                        errorMessage = error.toString();
+                      });
+                    }
+                  }
+                },
+                child: Text(isCreatingAccount == true ? 'REGISTER' : 'SIGN IN'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  onPrimary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              if (isCreatingAccount == false) ...[
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isCreatingAccount = true;
+                    });
+                  },
+                  child: Text(
+                    'Don\'t have an account? Create',
+                    style: GoogleFonts.alef(
+                        fontSize: 17,
+                        color: const Color.fromARGB(255, 0, 0, 0)),
+                  ),
+                ),
+              ],
+              if (isCreatingAccount == true) ...[
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isCreatingAccount = false;
+                    });
+                  },
+                  child: Text(
+                    'Do you have an account? Sign in',
+                    style: GoogleFonts.alef(
+                        fontSize: 17,
+                        color: const Color.fromARGB(255, 0, 0, 0)),
+                  ),
+                ),
+              ],
+            ],
+          ),
         ),
       ),
     ));
