@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -40,21 +43,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAxiZYNh8iKzrik7I7TpEx_dt1DcQx13QY',
-    appId: '1:780545128402:android:77848ba1cbf8b5c960fa0b',
-    messagingSenderId: '780545128402',
-    projectId: 'notemobile-388',
-    storageBucket: 'notemobile-388.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyANLwlrQwDcqAvZydNgrJyFjP9ynpA899Y',
-    appId: '1:780545128402:ios:6efc397005803cf960fa0b',
-    messagingSenderId: '780545128402',
-    projectId: 'notemobile-388',
-    storageBucket: 'notemobile-388.appspot.com',
-    iosClientId:
-        '780545128402-svfhvn0maudca6nqja1ndpooc2v9kr9i.apps.googleusercontent.com',
-    iosBundleId: 'com.michalkrysinski.notemobile',
+    apiKey: 'AIzaSyAK_WdiGopuX5WLa_UAWrDYKRB7vuSwjJ0',
+    appId: '1:357189290973:android:cf4050df2aeef44499c434',
+    messagingSenderId: '357189290973',
+    projectId: 'notemobile-378',
+    storageBucket: 'notemobile-378.appspot.com',
   );
 }

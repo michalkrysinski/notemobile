@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
     required this.user,
@@ -10,48 +10,24 @@ class HomePage extends StatefulWidget {
   final User user;
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notemobile'),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.menu,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          ),
-        ],
-        elevation: 10,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.black, Colors.pink],
-              begin: Alignment.bottomRight,
-              end: Alignment.topLeft,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Jesteś zalogowany jako ${user.email}'),
+            const SizedBox(
+              height: 40,
             ),
-          ),
+            ElevatedButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              child: const Text('Wyloguj'),
+            ),
+          ],
         ),
-      ),
-      body: ListView(
-        children: [
-          Container(
-            color: Colors.pink,
-            padding: const EdgeInsets.all(25),
-            margin: const EdgeInsets.all(15),
-            child: Text('Jesteś zalogowany jako ${widget.user.email}'),
-          ),
-        ],
       ),
     );
   }
