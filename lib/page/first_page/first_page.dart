@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:notemobile/main.dart';
+import 'package:notemobile/page/management_page/management_page.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({
@@ -17,7 +17,7 @@ class _FirstPage extends State<FirstPage> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 6),
+      const Duration(seconds: 5),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -36,8 +36,8 @@ class _FirstPage extends State<FirstPage> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 233, 30, 81),
-              Color.fromARGB(255, 0, 0, 0),
+              Color.fromARGB(255, 206, 93, 240),
+              Color.fromARGB(255, 159, 85, 233),
             ],
           ),
         ),
@@ -46,12 +46,12 @@ class _FirstPage extends State<FirstPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
             Column(
               children: [
                 Image.asset(
-                  'images/Notebook.png',
+                  'images/notebook1.jpg',
                   height: 300.0,
                   width: 300.0,
                 ),
@@ -59,7 +59,7 @@ class _FirstPage extends State<FirstPage> {
                   height: 150,
                   child: DefaultTextStyle(
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 218, 221, 235),
+                      color: Color.fromARGB(255, 255, 255, 255),
                       fontSize: 35,
                     ),
                     child: AnimatedTextKit(
@@ -68,7 +68,7 @@ class _FirstPage extends State<FirstPage> {
                       animatedTexts: [
                         TyperAnimatedText('Welcome!'),
                         TyperAnimatedText('Create your own notes'),
-                        TyperAnimatedText('in Notemobile.'),
+                        TyperAnimatedText('in Notemobile!'),
                       ],
                     ),
                   ),
