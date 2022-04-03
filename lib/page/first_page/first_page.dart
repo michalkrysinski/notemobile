@@ -30,52 +30,56 @@ class _FirstPage extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('NOTEMOBILE'),
+        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 48, 0, 70),
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 206, 93, 240),
-              Color.fromARGB(255, 159, 85, 233),
+              Color.fromARGB(255, 95, 0, 143),
+              Color.fromARGB(255, 54, 0, 67),
             ],
           ),
         ),
-        child: Column(
+        child: ListView(
           children: [
-            const SizedBox(
-              height: 190,
-            ),
-            const CircleAvatar(
-              backgroundImage: AssetImage('images/iconnotes2.jpg'),
-              radius: 90,
-            ),
-            const SizedBox(
-              height: 80,
-            ),
             SizedBox(
-              height: 50,
-              child: DefaultTextStyle(
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontSize: 35,
-                ),
-                child: AnimatedTextKit(
-                  repeatForever: true,
-                  isRepeatingAnimation: true,
-                  animatedTexts: [
-                    TyperAnimatedText(
-                      'Hello!',
-                    ),
-                    TyperAnimatedText(
-                      'Create your own notes',
-                    ),
-                    TyperAnimatedText(
-                      'in Notemobile!',
-                    ),
-                  ],
+              height: 630,
+              child: Center(
+                child: DefaultTextStyle(
+                  style: const TextStyle(
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    fontSize: 35,
+                  ),
+                  child: AnimatedTextKit(
+                    repeatForever: true,
+                    isRepeatingAnimation: true,
+                    animatedTexts: [
+                      TyperAnimatedText(
+                        'Hello!',
+                      ),
+                      TyperAnimatedText(
+                        'Create your own notes',
+                      ),
+                      TyperAnimatedText(
+                        'in Notemobile!',
+                      ),
+                    ],
+                  ),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 1,
+            ),
+            const CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                  Color.fromARGB(255, 255, 255, 255)),
             ),
           ],
         ),
