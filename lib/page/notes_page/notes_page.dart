@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:notemobile/page/notes_page/category_widget/category_widget.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({
@@ -10,6 +12,8 @@ class NotesPage extends StatefulWidget {
 }
 
 class _NotesPageState extends State<NotesPage> {
+  final controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +33,14 @@ class _NotesPageState extends State<NotesPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
+        onPressed: () {
+          FirebaseFirestore.instance.collection('categories').add(
+            {
+              'title': controller.text,
+            },
+          );
+          controller.clear();
+        },
         label: const Text('Save Note'),
         icon: const Icon(
           Icons.note_add,
@@ -38,54 +49,48 @@ class _NotesPageState extends State<NotesPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
-        child: ListView(
-          children: const [
-            TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Note Title",
-              ),
-              style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-            ),
-            Expanded(
-              child: TextField(
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "Your note",
-                ),
-              ),
-            ),
-            CategoryWidget('Tekst 1'),
-            CategoryWidget('Tekst 2'),
-            CategoryWidget('Tekst 3'),
-          ],
-        ),
-      ),
-    );
-  }
-}
+        child: StreamBuilder<QuerySnapshot>(
+            stream:
+                FirebaseFirestore.instance.collection('categories').snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Text('Something went wrong');
+              }
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Text('Loading');
+              }
 
-class CategoryWidget extends StatelessWidget {
-  const CategoryWidget(
-    this.title, {
-    Key? key,
-  }) : super(key: key);
+              final documents = snapshot.data!.docs;
 
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-      padding: const EdgeInsets.all(
-        25,
+              return ListView(
+                children: [
+                  TextField(
+                    controller: controller,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Note",
+                    ),
+                    style: const TextStyle(
+                        fontSize: 22.0, fontWeight: FontWeight.bold),
+                  ),
+                  for (final document in documents) ...[
+                    Dismissible(
+                      key: ValueKey(document.id),
+                      onDismissed: (_) {
+                        FirebaseFirestore.instance
+                            .collection('categories')
+                            .doc(document.id)
+                            .delete();
+                      },
+                      child: CategoryWidget(
+                        document['title'],
+                      ),
+                    ),
+                  ],
+                ],
+              );
+            }),
       ),
-      margin: const EdgeInsets.all(
-        15,
-      ),
-      child: Text(title),
     );
   }
 }
