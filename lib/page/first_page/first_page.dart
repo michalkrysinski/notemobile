@@ -49,7 +49,7 @@ class _FirstPage extends State<FirstPage> {
         child: ListView(
           children: [
             SizedBox(
-              height: 630,
+              height: 580,
               child: Center(
                 child: DefaultTextStyle(
                   style: const TextStyle(

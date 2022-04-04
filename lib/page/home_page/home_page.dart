@@ -22,12 +22,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 138, 27, 190),
+        shadowColor: const Color.fromARGB(255, 78, 13, 107),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.more_vert,
+            ),
+          ),
+        ],
         title: Builder(
           builder: (context) {
             if (currentIndex == 0) {
-              return const Text('Notes');
+              return const Text(
+                'Notes',
+              );
             }
-            return const Text('My account');
+            return const Text(
+              'My account',
+            );
           },
         ),
       ),

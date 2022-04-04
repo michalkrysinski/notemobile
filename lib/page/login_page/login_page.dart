@@ -160,16 +160,18 @@ class _LoginPageState extends State<LoginPage> {
                 if (isCreatingAccount == true) ...[
                   TextButton(
                     onPressed: () {
-                      setState(() {
-                        isCreatingAccount = false;
-                      });
+                      setState(
+                        () {
+                          isCreatingAccount = false;
+                        },
+                      );
                     },
                     child: Text(
                       'Do you have an account? Sign in',
                       style: GoogleFonts.alef(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 0, 60, 255),
+                        color: const Color.fromARGB(255, 255, 255, 255),
                       ),
                     ),
                   ),

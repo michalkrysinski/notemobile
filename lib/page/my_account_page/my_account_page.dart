@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:notemobile/page/home_page/home_page.dart';
 
 class MyAccountPage extends StatelessWidget {
@@ -13,18 +14,41 @@ class MyAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: ListView(
         children: [
-          Text('Jesteś zalogowany jako ${widget.user.email}'),
           const SizedBox(
-            height: 40,
+            height: 60,
           ),
-          ElevatedButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-            child: const Text('Wyloguj'),
+          Center(
+            child: Text(
+              'Jesteś zalogowany jako: ${widget.user.email}',
+              style: GoogleFonts.alef(
+                fontSize: 14,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 420,
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              child: const Text(
+                'Wyloguj',
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: const Color.fromARGB(255, 138, 27, 190),
+                onPrimary: const Color.fromARGB(255, 255, 255, 255),
+                animationDuration: const Duration(
+                  milliseconds: 3600,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+            ),
           ),
         ],
       ),
