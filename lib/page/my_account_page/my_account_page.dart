@@ -17,7 +17,7 @@ class MyAccountPage extends StatelessWidget {
       child: ListView(
         children: [
           const SizedBox(
-            height: 60,
+            height: 200,
           ),
           Center(
             child: Text(
@@ -28,7 +28,7 @@ class MyAccountPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 420,
+            height: 350,
           ),
           Center(
             child: ElevatedButton(
