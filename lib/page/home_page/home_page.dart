@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:notemobile/page/my_account_page/my_account_page.dart';
-import 'package:notemobile/page/notes_page/notes_page.dart';
+import 'package:notemobile/page/home_page/my_account_page/my_account_page.dart';
+import 'package:notemobile/page/home_page/notes_page/notes_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({

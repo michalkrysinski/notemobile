@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:notemobile/page/notes_page/category_widget/category_widget.dart';
+import 'package:notemobile/page/home_page/notes_page/category_widget/category_widget.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({
