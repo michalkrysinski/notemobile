@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:notemobile/page/home_page/notes_page/add_note/add_note.dart';
 
@@ -12,6 +14,8 @@ class NotesPage extends StatefulWidget {
 
 class _NotesPageState extends State<NotesPage> {
   final controller = TextEditingController();
+
+  final ref = FirebaseFirestore.instance.collection('notes');
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +34,31 @@ class _NotesPageState extends State<NotesPage> {
           );
         },
       ),
-      body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
-          itemCount: 10,
-          itemBuilder: (_, index) {
-            return Container(
-              margin: const EdgeInsets.all(15),
-              height: 150,
-              color: const Color.fromARGB(255, 244, 219, 172),
-            );
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+          stream: ref.snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            return GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemCount: snapshot.hasData ? snapshot.data!.docs.length : 0,
+                itemBuilder: (_, index) {
+                  return Container(
+                    margin: const EdgeInsets.all(15),
+                    height: 150,
+                    color: const Color.fromARGB(255, 244, 219, 172),
+                    child: Column(
+                      children: [
+                        Text(
+                          snapshot.data!.docs[index]['title'],
+                        ),
+                        Text(
+                          snapshot.data!.docs[index]['note'],
+                        ),
+                      ],
+                    ),
+                  );
+                });
           }),
     );
   }
