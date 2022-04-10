@@ -22,3 +22,5 @@ class ManagementPage extends StatelessWidget {
     );
   }
 }
+
+//LOGIN AND REGISTER

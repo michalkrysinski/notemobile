@@ -28,7 +28,7 @@ class MyAccountPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 350,
+            height: 320,
           ),
           Center(
             child: ElevatedButton(
