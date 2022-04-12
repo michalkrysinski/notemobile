@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:notemobile/page/home_page/notes_page/add_note/add_note.dart';
 import 'package:notemobile/page/home_page/notes_page/edit_note/edit_note.dart';
 
@@ -17,6 +18,8 @@ class _NotesPageState extends State<NotesPage> {
   final controller = TextEditingController();
 
   final ref = FirebaseFirestore.instance.collection('notes');
+
+  get documents => null;
 
   @override
   Widget build(BuildContext context) {
@@ -55,20 +58,60 @@ class _NotesPageState extends State<NotesPage> {
                     ),
                   );
                 },
-                child: Container(
-                  margin: const EdgeInsets.all(15),
-                  height: 150,
-                  color: const Color.fromARGB(255, 244, 219, 172),
-                  child: Column(
-                    children: [
-                      Text(
-                        snapshot.data!.docs[index]['title'],
+                child: ListView(
+                  children: [
+                    Dismissible(
+                      key: UniqueKey(),
+                      child: Center(
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          margin: const EdgeInsets.all(15),
+                          height: 180,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 227, 201, 237),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                            gradient: const LinearGradient(
+                              colors: [
+                                Color.fromARGB(255, 255, 255, 255),
+                                Color.fromARGB(255, 192, 160, 211),
+                              ],
+                            ),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 212, 192, 192),
+                                blurRadius: 2.0,
+                                offset: Offset(2.0, 2.0),
+                              )
+                            ],
+                          ),
+                          child: ListView(
+                            children: [
+                              Text(
+                                snapshot.data!.docs[index]['title'],
+                                style: GoogleFonts.lato(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                snapshot.data!.docs[index]['note'],
+                                style: GoogleFonts.lato(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      Text(
-                        snapshot.data!.docs[index]['note'],
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
             },

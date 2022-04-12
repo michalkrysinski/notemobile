@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:notemobile/page/home_page/notes_page/notes_page.dart';
 
 // ignore: must_be_immutable
 class EditNote extends StatefulWidget {
@@ -29,20 +28,59 @@ class _EditNoteState extends State<EditNote> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        title: const Text('Note'),
         backgroundColor: const Color.fromARGB(255, 138, 27, 190),
         shadowColor: const Color.fromARGB(255, 78, 13, 107),
         actions: [
           TextButton(
             onPressed: () {
-              widget.docToEdit.reference.update(
-                {'title': title.text, 'note': note.text},
-              ).whenComplete(() => Navigator.pop(context));
+              widget.docToEdit.reference.delete().whenComplete(
+                    () => Navigator.pop(
+                      context,
+                    ),
+                  );
             },
-            child: const Text('Save'),
+            child: const Icon(
+              Icons.delete,
+            ),
             style: TextButton.styleFrom(
-              primary: const Color.fromARGB(255, 255, 255, 255),
-              textStyle:
-                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              primary: const Color.fromARGB(
+                255,
+                255,
+                255,
+                255,
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              widget.docToEdit.reference.update(
+                {
+                  'title': title.text,
+                  'note': note.text,
+                },
+              ).whenComplete(
+                () => Navigator.pop(
+                  context,
+                ),
+              );
+            },
+            child: const Icon(
+              Icons.check,
+            ),
+            style: TextButton.styleFrom(
+              primary: const Color.fromARGB(
+                255,
+                255,
+                255,
+                255,
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+              ),
             ),
           )
         ],

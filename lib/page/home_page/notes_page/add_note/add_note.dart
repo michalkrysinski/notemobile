@@ -20,6 +20,7 @@ class _AddNoteState extends State<AddNote> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        title: const Text('Add your note'),
         backgroundColor: const Color.fromARGB(255, 138, 27, 190),
         shadowColor: const Color.fromARGB(255, 78, 13, 107),
         actions: [
@@ -31,13 +32,13 @@ class _AddNoteState extends State<AddNote> {
                 () => Navigator.pop(context),
               );
             },
-            child: const Text('Save'),
+            child: const Icon(Icons.check),
             style: TextButton.styleFrom(
               primary: const Color.fromARGB(255, 255, 255, 255),
               textStyle:
                   const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-          )
+          ),
         ],
       ),
       body: Container(
