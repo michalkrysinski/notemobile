@@ -63,7 +63,7 @@ class _NotesPageState extends State<NotesPage> {
                     Dismissible(
                       key: UniqueKey(),
                       background: Container(
-                        color: Colors.green,
+                        color: Colors.red,
                         child: const Icon(Icons.check),
                       ),
                       secondaryBackground: Container(
