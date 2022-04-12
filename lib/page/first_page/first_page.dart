@@ -30,10 +30,12 @@ class _FirstPage extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('NOTEMOBILE'),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 48, 0, 70),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Container(
         width: double.infinity,
@@ -46,10 +48,11 @@ class _FirstPage extends State<FirstPage> {
             ],
           ),
         ),
-        child: ListView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 580,
+              height: 500,
               child: Center(
                 child: DefaultTextStyle(
                   style: const TextStyle(
@@ -67,7 +70,7 @@ class _FirstPage extends State<FirstPage> {
                         'Create your own notes',
                       ),
                       TyperAnimatedText(
-                        'in Notemobile!',
+                        'in Notemobile',
                       ),
                     ],
                   ),
@@ -75,11 +78,16 @@ class _FirstPage extends State<FirstPage> {
               ),
             ),
             const SizedBox(
-              height: 1,
+              height: 2,
             ),
-            const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                  Color.fromARGB(255, 255, 255, 255)),
+            Container(
+              alignment: Alignment.topCenter,
+              margin: const EdgeInsets.only(top: 20),
+              child: const CircularProgressIndicator(
+                backgroundColor: Color.fromARGB(255, 54, 0, 67),
+                color: Color.fromARGB(255, 255, 255, 255),
+                strokeWidth: 3,
+              ),
             ),
           ],
         ),

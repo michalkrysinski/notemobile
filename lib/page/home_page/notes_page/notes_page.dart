@@ -70,14 +70,14 @@ class _NotesPageState extends State<NotesPage> {
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             border: Border.all(
-                              color: const Color.fromARGB(255, 227, 201, 237),
+                              color: const Color.fromARGB(255, 112, 33, 143),
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(10.0),
                             gradient: const LinearGradient(
                               colors: [
                                 Color.fromARGB(255, 255, 255, 255),
-                                Color.fromARGB(255, 192, 160, 211),
+                                Color.fromARGB(255, 255, 255, 255),
                               ],
                             ),
                             boxShadow: const [
