@@ -62,6 +62,14 @@ class _NotesPageState extends State<NotesPage> {
                   children: [
                     Dismissible(
                       key: UniqueKey(),
+                      background: Container(
+                        color: Colors.green,
+                        child: const Icon(Icons.check),
+                      ),
+                      secondaryBackground: Container(
+                        color: Colors.red,
+                        child: const Icon(Icons.cancel),
+                      ),
                       child: Center(
                         child: Container(
                           padding: const EdgeInsets.all(12),
